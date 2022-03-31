@@ -82,7 +82,6 @@ class Login extends React.Component {
                 event.preventDefault();
                 saveUserData(email);
                 history.push('/carteira');
-                console.log(history.location.pathname);
               } }
             >
               Entrar

@@ -7,12 +7,10 @@ import Wallet from './pages/Wallet';
 class App extends Component {
   render() {
     return (
-      <div>
-        <Switch>
-          <Route exact path="/" render={ (props) => <Login { ...props } /> } />
-          <Route path="/carteira" component={ Wallet } />
-        </Switch>
-      </div>
+      <Switch>
+        <Route exact path="/" render={ (props) => <Login { ...props } /> } />
+        <Route path="/carteira" component={ Wallet } />
+      </Switch>
     );
   }
 }

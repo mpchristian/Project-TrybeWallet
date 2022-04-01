@@ -8,14 +8,14 @@ import ExpenseForm from '../components/ExpenseForm';
 class Wallet extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(actionCurrencies()); // enviando a action fetchCurrencies
+    dispatch(actionCurrencies()); // enviando a action
   }
 
   render() {
-    const { email, currencies } = this.props;
+    const { email, currencies, allValues } = this.props;
     return (
       <>
-        <Header email={ email } />
+        <Header email={ email } allValues={ allValues } />
         <ExpenseForm currencies={ currencies } />
       </>
     );
@@ -25,6 +25,12 @@ class Wallet extends Component {
 const mapStateToProps = (state) => ({
   email: state.user.email,
   currencies: state.wallet.currencies,
+  allValues: state.wallet.expenses.map(
+    ({ value, currency, exchangeRates }) => {
+      const factor = exchangeRates[currency].ask;
+      return factor * value;
+    },
+  ),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -35,12 +41,14 @@ Wallet.propTypes = {
   email: PropTypes.string,
   dispatch: PropTypes.func,
   currencies: PropTypes.arrayOf(PropTypes.string),
+  allValues: PropTypes.arrayOf(PropTypes.number),
 };
 
 Wallet.defaultProps = {
   email: '',
   dispatch: () => { },
   currencies: [],
+  allValues: [0],
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Wallet);

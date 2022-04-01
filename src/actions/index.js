@@ -7,6 +7,14 @@ const recieveCurrencies = (currencies) => ({
   currencies,
 });
 
+const exchangeRates = (expenses, rates) => ({
+  type: 'ADD_EXPENSE',
+  expenses: {
+    ...expenses,
+    exchangeRates: rates,
+  },
+});
+
 export const actionCurrencies = () => (
   (dispatch) => { // thunk declarado
     fetch(END_POINT_CURRENCIES)
@@ -15,4 +23,10 @@ export const actionCurrencies = () => (
   }
 );
 
-export const actionAddExpense = (expenses) => ({ type: 'ADD_EXPENSE', expenses });
+export const actionAddExpense = (expenses) => (
+  (dispatch) => { // thunk declarado
+    fetch(END_POINT_CURRENCIES)
+      .then((response) => response.json())
+      .then((rates) => dispatch(exchangeRates(expenses, rates)));
+  }
+);

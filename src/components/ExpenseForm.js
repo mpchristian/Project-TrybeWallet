@@ -6,7 +6,7 @@ import { actionAddExpense } from '../actions';
 const defaultTag = 'Alimentação';
 
 const defaultState = {
-  value: '',
+  value: 0,
   description: '',
   currency: 'USD',
   method: 'Dinheiro',
@@ -16,8 +16,8 @@ const defaultState = {
 class ExpenseForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { id: -1, ...defaultState };
-    // id is the counter. Each click will increment it and send to store
+    this.state = { id: 0, ...defaultState };
+    // id is the counter. After the click it is incremented
   }
 
   handleState = ({ target }) => {
@@ -86,7 +86,12 @@ class ExpenseForm extends Component {
         <label htmlFor="method-input">
           Método de pagamento:
           {' '}
-          <select data-testid="method-input" name="method" onChange={ this.handleState }>
+          <select
+            id="method-input"
+            data-testid="method-input"
+            name="method"
+            onChange={ this.handleState }
+          >
             <option
               selected={ method === 'Dinheiro' }
               value="Dinheiro"
@@ -110,10 +115,15 @@ class ExpenseForm extends Component {
           </select>
         </label>
 
-        <label htmlFor="category-input">
+        <label htmlFor="tag-input">
           Categoria:
           {' '}
-          <select data-testid="tag-input" name="tag" onChange={ this.handleState }>
+          <select
+            id="tag-input"
+            data-testid="tag-input"
+            name="tag"
+            onChange={ this.handleState }
+          >
             <option
               selected={ tag === defaultTag }
               value="Alimentação"
@@ -154,7 +164,8 @@ class ExpenseForm extends Component {
           type="submit"
           onClick={ (event) => {
             event.preventDefault();
-            this.setState({ ...defaultState, id: id + 1 }, () => addExpense(this.state));
+            addExpense(this.state);
+            this.setState({ ...defaultState, id: id + 1 });
           } }
         >
           Adicionar despesa

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import { actionCurrencies } from '../actions';
+import ExpenseForm from '../components/ExpenseForm';
 
 class Wallet extends Component {
   componentDidMount() {
@@ -11,13 +12,19 @@ class Wallet extends Component {
   }
 
   render() {
-    const { email } = this.props;
-    return (<Header email={ email } />);
+    const { email, currencies } = this.props;
+    return (
+      <>
+        <Header email={ email } />
+        <ExpenseForm currencies={ currencies } />
+      </>
+    );
   }
 }
 
 const mapStateToProps = (state) => ({
   email: state.user.email,
+  currencies: state.wallet.currencies,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -27,11 +34,13 @@ const mapDispatchToProps = (dispatch) => ({
 Wallet.propTypes = {
   email: PropTypes.string,
   dispatch: PropTypes.func,
+  currencies: PropTypes.arrayOf(PropTypes.string),
 };
 
 Wallet.defaultProps = {
   email: '',
-  dispatch: () => {},
+  dispatch: () => { },
+  currencies: [],
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Wallet);

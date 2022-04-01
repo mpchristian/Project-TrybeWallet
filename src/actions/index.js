@@ -15,4 +15,4 @@ export const actionCurrencies = () => (
   }
 );
 
-export const actionAddExpense = (expense) => ({ type: 'ADD_EXPENSE', expense });
+export const actionAddExpense = (expenses) => ({ type: 'ADD_EXPENSE', expenses });

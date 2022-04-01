@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { actionAddExpense } from '../actions';
 
 const defaultTag = 'Alimentação';
+
+const defaultState = {
+  value: '',
+  description: '',
+  currency: 'USD',
+  method: 'Dinheiro',
+  tag: defaultTag,
+};
 
 class ExpenseForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      value: '',
-      description: '',
-      currency: 'USD',
-      method: 'Dinheiro',
-      tag: defaultTag,
-    };
+    this.state = { id: -1, ...defaultState };
+    // id is the counter. Each click will increment it and send to store
   }
 
   handleState = ({ target }) => {
@@ -23,13 +28,10 @@ class ExpenseForm extends Component {
     });
   }
 
-  submitData = (event) => {
-    event.preventDefault();
-  }
-
   render() {
-    const { currencies } = this.props;
+    const { currencies, addExpense } = this.props;
     const {
+      id,
       value,
       description,
       currency,
@@ -150,7 +152,10 @@ class ExpenseForm extends Component {
 
         <button
           type="submit"
-          onClick={ this.submitData }
+          onClick={ (event) => {
+            event.preventDefault();
+            this.setState({ ...defaultState, id: id + 1 }, () => addExpense(this.state));
+          } }
         >
           Adicionar despesa
         </button>
@@ -161,6 +166,15 @@ class ExpenseForm extends Component {
 
 ExpenseForm.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
+  addExpense: PropTypes.func,
 };
 
-export default ExpenseForm;
+ExpenseForm.defaultProps = {
+  addExpense: () => {},
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  addExpense: (value) => dispatch(actionAddExpense(value)),
+});
+
+export default connect(null, mapDispatchToProps)(ExpenseForm);

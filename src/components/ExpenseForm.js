@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+const defaultTag = 'Alimentação';
+
 class ExpenseForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       value: '',
-      currency: 'USD',
       description: '',
-      method: 'cash',
-      cathegory: 'food',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: defaultTag,
     };
   }
 
@@ -21,14 +23,18 @@ class ExpenseForm extends Component {
     });
   }
 
+  submitData = (event) => {
+    event.preventDefault();
+  }
+
   render() {
     const { currencies } = this.props;
     const {
       value,
-      currency,
       description,
+      currency,
       method,
-      cathegory,
+      tag,
     } = this.state;
 
     return (
@@ -80,22 +86,22 @@ class ExpenseForm extends Component {
           {' '}
           <select data-testid="method-input" name="method" onChange={ this.handleState }>
             <option
-              selected={ method === 'cash' }
-              value="cash"
+              selected={ method === 'Dinheiro' }
+              value="Dinheiro"
             >
               Dinheiro
             </option>
 
             <option
-              selected={ method === 'credit' }
-              value="credit"
+              selected={ method === 'Cartão de crédito' }
+              value="Cartão de crédito"
             >
               Cartão de crédito
             </option>
 
             <option
-              selected={ method === 'debit' }
-              value="debit"
+              selected={ method === 'Cartão de débito' }
+              value="Cartão de débito"
             >
               Cartão de débito
             </option>
@@ -105,37 +111,49 @@ class ExpenseForm extends Component {
         <label htmlFor="category-input">
           Categoria:
           {' '}
-          <select data-testid="tag-input" name="cathegory" onChange={ this.handleState }>
+          <select data-testid="tag-input" name="tag" onChange={ this.handleState }>
             <option
-              selected={ cathegory === 'food' }
-              value="food"
+              selected={ tag === defaultTag }
+              value="Alimentação"
             >
               Alimentação
             </option>
 
             <option
-              selected={ cathegory === 'lazer' }
-              value="lazer"
+              selected={ tag === 'Lazer' }
+              value="Lazer"
             >
               Lazer
             </option>
 
             <option
-              selected={ cathegory === 'work' }
-              value="work"
+              selected={ tag === 'Trabalho' }
+              value="Trabalho"
             >
               Trabalho
             </option>
 
             <option
-              selected={ cathegory === 'transport' }
-              value="transport"
+              selected={ tag === 'Transporte' }
+              value="Transporte"
             >
               Transporte
             </option>
-            <option selected={ cathegory === 'health' } value="health">Saúde</option>
+            <option
+              selected={ tag === 'Saúde' }
+              value="Saúde"
+            >
+              Saúde
+            </option>
           </select>
         </label>
+
+        <button
+          type="submit"
+          onClick={ this.submitData }
+        >
+          Adicionar despesa
+        </button>
       </form>
     );
   }

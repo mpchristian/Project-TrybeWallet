@@ -14,3 +14,5 @@ export const actionCurrencies = () => (
       .then((currencies) => dispatch(recieveCurrencies(currencies)));
   }
 );
+
+export const actionAddExpense = (expense) => ({ type: 'ADD_EXPENSE', expense });

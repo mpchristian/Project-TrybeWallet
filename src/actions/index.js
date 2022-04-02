@@ -30,3 +30,8 @@ export const actionAddExpense = (expenses) => (
       .then((rates) => dispatch(exchangeRates(expenses, rates)));
   }
 );
+
+export const actionDelete = (id) => ({
+  type: 'DELETE_EXPENSE',
+  id,
+});

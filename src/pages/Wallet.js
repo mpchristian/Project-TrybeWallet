@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import { actionCurrencies } from '../actions';
 import ExpenseForm from '../components/ExpenseForm';
+import Table from '../components/Table';
 
 class Wallet extends Component {
   componentDidMount() {
@@ -17,6 +18,7 @@ class Wallet extends Component {
       <>
         <Header email={ email } allValues={ allValues } />
         <ExpenseForm currencies={ currencies } />
+        <Table />
       </>
     );
   }

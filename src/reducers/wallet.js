@@ -12,7 +12,7 @@ const wallet = (state = INITIAL_CURRENCIES_STATE, action) => {
   case 'ADD_EXPENSE':
     return {
       ...state,
-      expenses: [...state.expenses, action.expenses],
+      expenses: [...state.expenses, action.expenses].sort((a, b) => a.id - b.id),
     };
   case 'DELETE_EXPENSE':
     return {

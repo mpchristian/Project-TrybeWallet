@@ -95,7 +95,7 @@ Table.propTypes = {
   loadState: PropTypes.func.isRequired,
   expenses: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
-    value: PropTypes.number,
+    value: PropTypes.string,
     description: PropTypes.string,
     currency: PropTypes.string,
     method: PropTypes.string,

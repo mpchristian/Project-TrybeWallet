@@ -41,7 +41,7 @@ class ExpenseForm extends Component {
             id="currency-input"
             data-testid="currency-input"
             name="currency"
-            defaultValue={ currency }
+            value={ currency }
             onChange={ handleForm }
           >
             {currencies.map((element) => (
@@ -75,8 +75,8 @@ class ExpenseForm extends Component {
             id="method-input"
             data-testid="method-input"
             name="method"
-            defaultValue={ method }
             onChange={ handleForm }
+            value={ method }
           >
             <option
               value="Dinheiro"
@@ -105,8 +105,8 @@ class ExpenseForm extends Component {
             id="tag-input"
             data-testid="tag-input"
             name="tag"
+            value={ tag }
             onChange={ handleForm }
-            defaultValue={ tag }
           >
             <option
               value="Alimentação"
@@ -174,7 +174,7 @@ ExpenseForm.propTypes = {
   formState: PropTypes.shape({
     idToEdit: PropTypes.number,
     id: PropTypes.number,
-    value: PropTypes.number,
+    value: PropTypes.string,
     description: PropTypes.string,
     currency: PropTypes.string,
     method: PropTypes.string,

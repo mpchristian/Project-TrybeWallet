@@ -27,8 +27,8 @@ class Wallet extends Component {
     dispatch(actionCurrencies()); // enviando a action
   }
 
-  resetState = (id) => {
-    this.setState({ ...defaultState, ...id });
+  resetState = (newId) => {
+    this.setState({ ...defaultState, ...newId });
   };
 
   loadState = (newstate) => {
@@ -45,14 +45,13 @@ class Wallet extends Component {
 
   render() {
     const { email, currencies, allValues } = this.props;
-    const formState = this.state;
 
     return (
       <>
         <Header email={ email } allValues={ allValues } />
         <ExpenseForm
           currencies={ currencies }
-          formState={ formState }
+          formState={ this.state }
           handleForm={ this.handleForm }
           resetState={ this.resetState }
         />

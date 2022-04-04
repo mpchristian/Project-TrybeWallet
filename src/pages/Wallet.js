@@ -9,7 +9,7 @@ import Table from '../components/Table';
 const defaultState = {
   idToEdit: -1,
   id: 0,
-  value: '0.00',
+  value: '',
   description: '',
   currency: 'USD',
   method: 'Dinheiro',

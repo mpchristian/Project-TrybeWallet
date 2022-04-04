@@ -19,6 +19,17 @@ const wallet = (state = INITIAL_CURRENCIES_STATE, action) => {
       ...state,
       expenses: state.expenses.filter((element) => element.id !== action.id),
     };
+  case 'EDIT_EXPENSE': {
+    const { exchangeRates } = state.expenses[action.editedExpense.id];
+    const newExpense = { ...action.editedExpense, exchangeRates };
+
+    return {
+      ...state,
+      expenses: [
+        ...state.expenses.filter((element) => element.id !== action.editedExpense.id),
+        newExpense,
+      ].sort((a, b) => a.id - b.id),
+    }; }
   default:
     return state;
   }

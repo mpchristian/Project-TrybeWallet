@@ -35,3 +35,8 @@ export const actionDelete = (id) => ({
   type: 'DELETE_EXPENSE',
   id,
 });
+
+export const actionEdit = (editedExpense) => ({
+  type: 'EDIT_EXPENSE',
+  editedExpense,
+});

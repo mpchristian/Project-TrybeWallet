@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { actionAddExpense, actionDelete } from '../actions';
+import { actionAddExpense, actionEdit } from '../actions';
 
 class ExpenseForm extends Component {
   render() {
     const {
-      currencies, formState, handleForm, resetState, addExpense, deleteExpense,
+      currencies, formState, handleForm, resetState, addExpense, editExpense,
     } = this.props;
 
     const {
@@ -149,8 +149,9 @@ class ExpenseForm extends Component {
               type="submit"
               onClick={ (event) => {
                 event.preventDefault();
-                deleteExpense(idToEdit);
-                addExpense({ ...addToStore, id: idToEdit });
+                // deleteExpense(idToEdit); // if new api request is needed
+                // addExpense({ ...addToStore, id: idToEdit });
+                editExpense({ ...addToStore, id: idToEdit });
                 resetState({ id: idToEdit });
               } }
             >
@@ -187,7 +188,7 @@ ExpenseForm.propTypes = {
   }).isRequired,
   handleForm: PropTypes.func.isRequired,
   resetState: PropTypes.func.isRequired,
-  deleteExpense: PropTypes.func.isRequired,
+  editExpense: PropTypes.func.isRequired,
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
   addExpense: PropTypes.func,
 };
@@ -198,7 +199,11 @@ ExpenseForm.defaultProps = {
 
 const mapDispatchToProps = (dispatch) => ({
   addExpense: (value) => dispatch(actionAddExpense(value)),
-  deleteExpense: (value) => dispatch(actionDelete(value)),
+  editExpense: (value) => dispatch(actionEdit(value)),
 });
 
-export default connect(null, mapDispatchToProps)(ExpenseForm);
+const mapStateToProps = (state) => ({
+  expenses: state.wallet.expenses,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExpenseForm);

@@ -7,9 +7,9 @@ import ExpenseForm from '../components/ExpenseForm';
 import Table from '../components/Table';
 
 const defaultState = {
-  idToEdit: '',
+  idToEdit: -1,
   id: 0,
-  value: 0,
+  value: '0.00',
   description: '',
   currency: 'USD',
   method: 'Dinheiro',

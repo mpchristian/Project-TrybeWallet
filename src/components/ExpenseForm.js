@@ -17,6 +17,8 @@ class ExpenseForm extends Component {
       tag,
     } = formState;
 
+    const noIdToEdit = -1;
+
     const { idToEdit, ...addToStore } = formState;
 
     return (
@@ -31,6 +33,8 @@ class ExpenseForm extends Component {
             name="value"
             value={ value }
             onChange={ handleForm }
+            min="0"
+            step="0.01"
           />
         </label>
 
@@ -140,7 +144,7 @@ class ExpenseForm extends Component {
         </label>
 
         {
-          idToEdit !== '' ? (
+          idToEdit !== noIdToEdit ? (
             <button
               type="submit"
               onClick={ (event) => {

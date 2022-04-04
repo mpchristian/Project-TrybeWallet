@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { actionUser } from '../actions';
+import './Login.css';
 
 class Login extends React.Component {
   constructor(props) {
@@ -41,16 +42,17 @@ class Login extends React.Component {
       props: { saveUserData, history },
     } = this;
     return (
-      <>
-        <div>Bem-vindo ao TrybeWallet</div>
-        <div>
-          <form>
-            <label htmlFor="email-input">
+      <div className="login-page">
+        <div className="login-form">
+          <div className="trybewallet-title">Bem-vindo ao TrybeWallet</div>
+          <form className="login-inputs">
+            <label htmlFor="email-input" className="email-field">
               Email:
               {' '}
               <input
                 data-testid="email-input"
                 id="email-input"
+                className="email-input"
                 type="email"
                 name="email"
                 onChange={ handleState }
@@ -60,15 +62,15 @@ class Login extends React.Component {
               />
             </label>
 
-            <label htmlFor="password-input">
+            <label htmlFor="password-input" className="password-field">
               Senha:
               {' '}
               <input
                 data-testid="password-input"
                 id="password-input"
+                className="password-input"
                 name="password"
                 onChange={ handleState }
-                placeholder="••••••"
                 type="password"
                 value={ password }
                 required
@@ -88,7 +90,7 @@ class Login extends React.Component {
             </button>
           </form>
         </div>
-      </>
+      </div>
     );
   }
 }

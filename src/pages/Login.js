@@ -43,11 +43,15 @@ class Login extends React.Component {
     return (
       <div className="login-page">
         <div className="login-form">
-          <div className="trybewallet-title">Bem-vindo ao TrybeWallet</div>
+          <div className="trybewallet-title">
+            <h1>
+              TrybeWallet
+              <span id="emoji" role="img" aria-label="Money flying">💸</span>
+            </h1>
+          </div>
           <form className="login-inputs">
             <label htmlFor="email-input" className="email-field">
-              Email:
-              {' '}
+              Email
               <input
                 data-testid="email-input"
                 id="email-input"
@@ -62,8 +66,7 @@ class Login extends React.Component {
             </label>
 
             <label htmlFor="password-input" className="password-field">
-              Senha:
-              {' '}
+              Senha
               <input
                 data-testid="password-input"
                 id="password-input"
@@ -76,17 +79,20 @@ class Login extends React.Component {
               />
             </label>
 
-            <button
-              type="submit"
-              disabled={ enableButton(email, password) }
-              onClick={ (event) => {
-                event.preventDefault();
-                saveUserData(email);
-                history.push('/carteira');
-              } }
-            >
-              Entrar
-            </button>
+            <div className="submit-field">
+              <button
+                type="submit"
+                id="submit-login-btn"
+                disabled={ enableButton(email, password) }
+                onClick={ (event) => {
+                  event.preventDefault();
+                  saveUserData(email);
+                  history.push('/carteira');
+                } }
+              >
+                Entrar
+              </button>
+            </div>
           </form>
         </div>
       </div>

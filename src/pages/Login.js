@@ -9,6 +9,7 @@ class Login extends React.Component {
     this.state = {
       email: '',
       password: '',
+      passwordHidden: true,
     };
   }
 
@@ -37,7 +38,7 @@ class Login extends React.Component {
     const {
       handleState,
       enableButton,
-      state: { email, password },
+      state: { email, password, passwordHidden },
       props: { saveUserData, history },
     } = this;
     return (
@@ -65,15 +66,49 @@ class Login extends React.Component {
               />
             </label>
 
-            <label htmlFor="password-input" className="password-field">
+            <label htmlFor="password-input">
               Senha
+              {' '}
+              {passwordHidden ? (
+                <span
+                  role="button"
+                  onClick={ () => this.setState({ passwordHidden: false }) }
+                  onKeyDown={ () => { } }
+                  tabIndex={ 0 }
+                >
+                  <span
+                    className="monkey-emojis"
+                    role="img"
+                    aria-label="Monkey with closed eyes"
+                  >
+                    🙈
+                  </span>
+                </span>
+
+              ) : (
+                <span
+                  role="button"
+                  onClick={ () => this.setState({ passwordHidden: true }) }
+                  onKeyDown={ () => { } }
+                  tabIndex={ 0 }
+                >
+                  <span
+                    className="monkey-emojis"
+                    role="img"
+                    aria-label="Monkey with closed eyes"
+                  >
+                    🐵
+                  </span>
+                </span>
+
+              )}
               <input
                 data-testid="password-input"
                 id="password-input"
                 className="password-input"
                 name="password"
                 onChange={ handleState }
-                type="password"
+                type={ passwordHidden ? 'password' : 'text' }
                 value={ password }
                 required
               />

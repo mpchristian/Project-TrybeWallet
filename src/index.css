@@ -39,7 +39,7 @@ h1 {
 .email-input , .password-input {
   box-sizing: border-box;
   width: 100%;
-  font-size: large;
+  font-size: medium;
   border-radius: 10px;
   padding: 10px;
 }
@@ -65,4 +65,12 @@ h1 {
 
 #emoji {
   font-size: 80px;
+}
+
+.monkey-emojis {
+  font-size: 30px;
+}
+
+.monkey-emojis:hover {
+  cursor: pointer;
 }

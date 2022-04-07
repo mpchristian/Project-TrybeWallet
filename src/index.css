@@ -24,6 +24,7 @@ h1 {
   background-color: rgb(247, 205, 129);
   border-radius: 10px;
   padding: 15px;
+  width: 300px;
 }
 
 .login-inputs {
@@ -42,9 +43,14 @@ input , select {
 
 .email-input , .password-input {
   box-sizing: border-box;
-  width: 100%;
   border-radius: 10px;
+  width: 100%;
   padding: 10px;
+}
+
+input , select {
+  border-radius: 5px;
+  background-color: white;
 }
 
 .email-field , .password-field {

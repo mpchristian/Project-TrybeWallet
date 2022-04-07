@@ -22,7 +22,7 @@ class ExpenseForm extends Component {
     const { idToEdit, ...addToStore } = formState;
 
     return (
-      <form>
+      <form className="expenses-form">
         <label htmlFor="value-input">
           Valor:
           {' '}
@@ -146,6 +146,7 @@ class ExpenseForm extends Component {
         {
           idToEdit !== noIdToEdit ? (
             <button
+              id="edit-expense-btn"
               type="submit"
               onClick={ (event) => {
                 event.preventDefault();
@@ -160,6 +161,7 @@ class ExpenseForm extends Component {
           ) : (
             <button
               type="submit"
+              id="add-expense-btn"
               onClick={ (event) => {
                 event.preventDefault();
                 addExpense(addToStore);

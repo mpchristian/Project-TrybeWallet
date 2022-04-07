@@ -79,9 +79,9 @@ class Login extends React.Component {
                   <span
                     className="monkey-emojis"
                     role="img"
-                    aria-label="Monkey with closed eyes"
+                    aria-label="Monkey with open eyes"
                   >
-                    🙈
+                    🐵
                   </span>
                 </span>
 
@@ -97,7 +97,7 @@ class Login extends React.Component {
                     role="img"
                     aria-label="Monkey with closed eyes"
                   >
-                    🐵
+                    🙈
                   </span>
                 </span>
 

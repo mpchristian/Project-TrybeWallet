@@ -11,20 +11,18 @@ class Header extends Component {
           <span id="emoji-header" role="img" aria-label="Money flying">💸</span>
         </div>
         <div className="header-right">
-          <div>
-            <p data-testid="email-field">{ email }</p>
+          <div className="header-right-elem" data-testid="email-field">
+            { email }
           </div>
           <div className="total-field">
-            <div>
+            <div className="header-right-elem">
               Total:
-              {' '}
-              <span data-testid="total-field">
+              <span className="header-right-elem" data-testid="total-field">
                 { total.toFixed(2) }
               </span>
-              <span data-testid="header-currency-field">
-                {' '}
-                BRL
-              </span>
+            </div>
+            <div className="header-right-elem" data-testid="header-currency-field">
+              BRL
             </div>
           </div>
         </div>

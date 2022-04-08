@@ -7,7 +7,7 @@ class Table extends Component {
   render() {
     const { expenses, deleteExpense, loadState } = this.props;
     return (
-      <div>
+      <div className="table-div">
         <table>
           <thead>
             <tr>
@@ -50,6 +50,7 @@ class Table extends Component {
                     <td>
                       <button
                         type="button"
+                        id="edit-btn"
                         data-testid="edit-btn"
                         onClick={ () => {
                           loadState({
@@ -66,6 +67,7 @@ class Table extends Component {
                       </button>
                       <button
                         type="button"
+                        id="delete-btn"
                         data-testid="delete-btn"
                         onClick={ () => deleteExpense(id) }
                       >

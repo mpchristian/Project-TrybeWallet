@@ -17,7 +17,11 @@ class Header extends Component {
           <div className="total-field">
             <div className="header-right-elem">
               Total:
-              <span className="header-right-elem" data-testid="total-field">
+              <span
+                className="header-right-elem"
+                id="total-field"
+                data-testid="total-field"
+              >
                 { total.toFixed(2) }
               </span>
             </div>

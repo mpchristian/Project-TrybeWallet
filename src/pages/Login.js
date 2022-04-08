@@ -42,7 +42,7 @@ class Login extends React.Component {
       props: { saveUserData, history },
     } = this;
     return (
-      <div className="login-page">
+      <div className="body">
         <div className="login-form">
           <div className="trybewallet-title">
             <h1>
@@ -131,6 +131,7 @@ class Login extends React.Component {
           </form>
         </div>
       </div>
+
     );
   }
 }

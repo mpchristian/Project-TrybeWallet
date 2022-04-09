@@ -170,6 +170,7 @@ td:nth-child(7) , td:nth-child(4) {
 }
 
 table {
+  margin-top: 10px;
   table-layout: fixed;
   width: 100%;
 }
@@ -193,4 +194,9 @@ table {
 td:nth-child(9) {
   display: flex;
   justify-content: space-evenly;
+}
+
+.selected {
+  background-color: rgb(247, 205, 129);
+  /* background-color: rgb(221, 250, 203); */
 }

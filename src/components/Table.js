@@ -5,7 +5,7 @@ import { actionDelete } from '../actions';
 
 class Table extends Component {
   render() {
-    const { expenses, deleteExpense, loadState } = this.props;
+    const { expenses, deleteExpense, loadState, idToEdit } = this.props;
     return (
       <div className="table-div">
         <table>
@@ -38,7 +38,7 @@ class Table extends Component {
               const formatedConvertedValue = Number(value * ask).toFixed(2);
               return (
                 <tbody key={ id }>
-                  <tr>
+                  <tr className={ id === idToEdit && 'selected' }>
                     <td>{description}</td>
                     <td>{tag}</td>
                     <td>{method}</td>
@@ -105,6 +105,7 @@ Table.propTypes = {
     exchangeRates: PropTypes.objectOf(PropTypes.any),
   })).isRequired,
   deleteExpense: PropTypes.func.isRequired,
+  idToEdit: PropTypes.number.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);

@@ -45,6 +45,7 @@ class Wallet extends Component {
 
   render() {
     const { email, currencies, allValues } = this.props;
+    const { idToEdit } = this.state;
 
     return (
       <>
@@ -57,6 +58,7 @@ class Wallet extends Component {
         />
         <Table
           loadState={ this.loadState }
+          idToEdit={ idToEdit }
         />
       </>
     );

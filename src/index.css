@@ -63,7 +63,7 @@ option {
 
 input , select {
   border-radius: 5px;
-  border: solid 2px black;
+  border: 2px solid green;
   background-color: white;
 }
 
